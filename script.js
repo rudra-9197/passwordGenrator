@@ -7,6 +7,12 @@ const symbolsEl = document.getElementById("symbols");
 const generateEl = document.getElementById("generate");
 const clipboardEl = document.getElementById("clipboard");
 
+
+clipboardEl.addEventListener("click", ()=>{
+
+    navigator.clipboard.writeText(resultEl.innerText)
+} )
+
 uppercaseEl.addEventListener("change", (event) => {
   if (event.target.checked) {
     event.target.value = 1;
@@ -37,16 +43,15 @@ generateEl.addEventListener("click", () => {
     symbolsEl.value,
     lengthEl.value
   );
-  console.log(paswrd);
+ 
   resultEl.innerText = paswrd;
 });
 
 function generatePassword(upper, lower, number, symbol, lngth) {
   let passwrd = "";
   let i = 0;
-  if(upper ==2 && lower == 2 && number == 2 && symbol == 2 )
-  {
-    let ask = alert("Pls select any one parameter")
+  if (upper == 2 && lower == 2 && number == 2 && symbol == 2) {
+    let ask = alert("Pls select any one parameter");
     return null;
   }
   const uppercaseE = document.getElementById("uppercase");
@@ -67,13 +72,12 @@ function generatePassword(upper, lower, number, symbol, lngth) {
       delete randomFunc.lower;
     }
     if (number == 2) {
-        delete randomFunc.number;
-      }
-      if (symbol == 2) {
-        delete randomFunc.symbol;
-      }
+      delete randomFunc.number;
+    }
+    if (symbol == 2) {
+      delete randomFunc.symbol;
+    }
 
-     
     let tmpar = Object.values(randomFunc);
 
     let num = Math.floor(Math.random() * tmpar.length);
